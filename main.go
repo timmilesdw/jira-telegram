@@ -63,7 +63,7 @@ func main() {
 			event.Issue.Fields.Priority.Name,
 		)
 
-		bot.Send(telebot.ChatID(chatId), str)
+		bot.Send(telebot.ChatID(chatId), str, telebot.Silent)
 
 		return c.SendStatus(fiber.StatusOK)
 	})
