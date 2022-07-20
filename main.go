@@ -42,7 +42,7 @@ func main() {
 			log.Error("Couldn't parse event")
 		}
 		str := fmt.Sprintf(
-			`<a href="%s">[%s]</a><b>'%s'</b>`,
+			`<a href="%s">[%s]</a> <b>'%s'</b>`,
 			fmt.Sprintf("%s/browse/%s", *jiraUrl, event.Issue.Key),
 			event.Issue.Key,
 			event.Issue.Fields.Summary,
