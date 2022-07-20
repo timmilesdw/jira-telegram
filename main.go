@@ -42,7 +42,7 @@ func main() {
 			log.Error("Couldn't parse event")
 		}
 		str := fmt.Sprintf(
-			`<a href="%s">[%s]</a><b>%s</b>`,
+			`<a href="%s">[%s]</a><b>'%s'</b>`,
 			fmt.Sprintf("%s/browse/%s", *jiraUrl, event.Issue.Key),
 			event.Issue.Key,
 			event.Issue.Fields.Summary,
@@ -50,9 +50,9 @@ func main() {
 
 		switch event.WebhookEvent {
 		case "jira:issue_updated":
-			str = str + " updated "
+			str = str + "\n\nUpdated "
 		case "jira:issue_created":
-			str = str + " created "
+			str = str + "\n\nCreated "
 		}
 
 		str = str + " " + fmt.Sprintf(
