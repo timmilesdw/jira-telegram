@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: jira-telegram
+  name: jira-telegram
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jira-telegram
+  template:
+    metadata:
+      labels:
+        app: jira-telegram
+    spec:
+      containers:
+      - image: timmiles/jira-telegram
+        name: jira-telegram
+        args:
+          - --jiraUrl https://jira.example.com
+          - --chatId 111111111
+        ports:
+          - containerPort: 3000
+            name: http
+        resources:
+          limits:
+            memory: 50Mi
+          requests:
+            memory: 50Mi
+        envFrom:
+          - secretRef:
+              name: "jira-telegram"
